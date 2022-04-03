@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count Up Animation</title>
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  <style media="screen">
+  * {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+body {
+background: url("http://driving-tests.org/wp-content/uploads/2012/03/night-road.jpg" );
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+height: 100vh;
+}
+.wrapper {
+position: absolute;
+width: 80vw;
+transform: translate(-50%, -50%);
+top: 50%;
+left: 50%;
+display: flex;
+justify-content: space-around;
+gap: 10px;
+}
+.container {
+width: 28vmin;
+height: 28vmin;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+padding: 1em 0;
+position: relative;
+font-size: 16px;
+border-radius: 0.5em;
+   backdrop-filter: blur(10px);
+
+box-shadow: -1px -1px 4px #aaa9a9a2,
+              1px 1px 7px rgba(147, 149, 151, 0.671);
+}
+i {
+color: #42f9e8;
+font-size: 3.8em;
+text-align: center;
+}
+span.num {
+color: #ffffff;
+display: grid;
+place-items: center;
+font-weight: 600;
+font-size: 3em;
+}
+span.text {
+color: #e0e0e0;
+font-size: 1em;
+text-align: center;
+pad: 0.7em 0;
+font-weight: 400;
+line-height: 0;
+}
+@media screen and (max-width: 1024px) {
+.wrapper {
+  width: 85vw;
+}
+.container {
+  height: 26vmin;
+  width: 26vmin;
+  font-size: 12px;
+}
+}
+@media screen and (max-width: 768px) {
+.wrapper {
+  width: 90vw;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.container {
+  width: calc(50% - 40px);
+  height: 30vmin;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+}
+@media screen and (max-width: 480px) {
+.wrapper {
+  gap: 15px;
+}
+.container {
+  width: 100%;
+  height: 25vmin;
+  font-size: 8px;
+  margin-bottom: 25px;
+}
+}
+  </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <i class="fa-brands fa-html5"></i>
+        <span class="num" data-val="365">000</span>
+        <span class="text">HTML Project</span>
+      </div>
+
+      <div class="container">
+        <i class="fa-brands fa-python"></i>
+        <span class="num" data-val="290">000</span>
+        <span class="text">Python Project</span>
+      </div>
+
+      <div class="container">
+        <i class="fa-brands fa-node-js"></i>
+        <span class="num" data-val="219">000</span>
+        <span class="text">Javascript Project</span>
+      </div>
+
+      <div class="container">
+        <i class="fa-brands fa-bootstrap"></i>
+        <span class="num" data-val="140">000</span>
+        <span class="text">Bootstrap Design</span>
+      </div>
+    </div>
+    <!-- Script -->
+  <script type="text/javascript">
+  let valueDisplays = document.querySelectorAll(".num");
+  let interval = 4000;
+
+  valueDisplays.forEach((valueDisplay) => {
+    let startValue = 0;
+    let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+    let duration = Math.floor(interval / endValue);
+    let counter = setInterval(function () {
+      startValue += 1;
+      valueDisplay.textContent = startValue;
+      if (startValue == endValue) {
+        clearInterval(counter);
+      }
+    }, duration);
+  });
+  </script>
+  </body>
+</html>
